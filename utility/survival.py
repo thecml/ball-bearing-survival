@@ -7,8 +7,6 @@ class Survival:
         pass    
 
     def predict_survival_function(self, model, X_test, times):
-        # lower, upper = np.percentile(y_test[y_test.dtype.names[1]], [10, 90])
-        # times = np.arange(np.ceil(lower + 1), np.floor(upper - 1), dtype=int)
         if model.__class__.__name__ == 'WeibullAFTFitter':
             surv_prob = model.predict_survival_function(X_test).T
             return surv_prob

@@ -3,7 +3,6 @@ import numpy as np
 import statistics
 import random
 import re
-import math
 from sklearn.preprocessing import StandardScaler
 from sklearn_pandas import DataFrameMapper
 import config as cfg

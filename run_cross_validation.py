@@ -1,29 +1,22 @@
 import numpy as np
 import pandas as pd
-from time import time
 import math
 import argparse
-import warnings
 import config as cfg
-import re
 from pycox.evaluation import EvalSurv
 from sksurv.util import Surv
-from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
-from xgbse.metrics import approx_brier_score
-from sklearn.model_selection import RandomizedSearchCV
-from tools.feature_selectors import NoneSelector, LowVar, SelectKBest4, SelectKBest8, RegMRMR4, RegMRMR8, UMAP8, VIF4, VIF8, PHSelector
-from tools.regressors import CoxPH, CphRidge, CphLASSO, CphElastic, RSF, CoxBoost, GradientBoostingDART, WeibullAFT, LogNormalAFT, LogLogisticAFT, DeepSurv, DSM
+from tools.regressors import CoxPH, RSF, CoxBoost, WeibullAFT, DeepSurv, DSM
 from tools.file_reader import FileReader
 from tools.data_ETL import DataETL
 from utility.builder import Builder
-from tools.experiments import SurvivalRegressionCV
 from utility.survival import Survival
 from auton_survival import DeepCoxPH
 from auton_survival import DeepSurvivalMachines
 from lifelines import WeibullAFTFitter
 from sklearn.model_selection import ParameterSampler
 
+import warnings
 warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
 
 N_BOOT = 3
@@ -35,18 +28,6 @@ N_ITER = 10
 N_SPLITS = 5
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset', type=str,
-                        required=False,
-                        default=None)
-    parser.add_argument('--typedata', type=str,
-                        required=False,
-                        default=None)
-    parser.add_argument('--merge', type=str,
-                        required=False,
-                        default=None)
-    args = parser.parse_args()
-
     global DATASET
     global TYPE
     global MERGE
@@ -54,17 +35,8 @@ def main():
     global N_BEARING
     global N_SPLITS
     global TRAIN_SIZE
-
-    if args.dataset:
-        DATASET = args.dataset
-
-    if args.typedata:
-        TYPE = args.typedata
     
-    if args.merge:
-        MERGE = args.merge
-    
-    DATASET = "pronostia"
+    DATASET = "xjtu"
     TYPE = "correlated"
     MERGE = False
 
@@ -80,7 +52,7 @@ def main():
     if NEW_DATASET== True:
         Builder(DATASET).build_new_dataset(bootstrap=N_BOOT)
     
-    models = [DSM]
+    models = [CoxPH, RSF, CoxBoost, DeepSurv, DSM, WeibullAFT]
     survival = Survival()
     
     cov_group = []
@@ -200,7 +172,9 @@ def main():
                 res_sr = pd.Series([str(model_name), sample, mean_c_index],
                                    index=["ModelName", "Params", "CIndex"])
                 model_results = pd.concat([model_results, res_sr.to_frame().T], ignore_index=True)
-            model_results.to_csv(f"data/logs/{DATASET}/{TYPE}/" + f"{model_name}_cv_results.csv")
+            
+            # Save results
+            model_results.to_csv(f"logs/{DATASET}/{TYPE}/" + f"{model_name}_cv_results.csv")
         
 if __name__ == "__main__":
     main()

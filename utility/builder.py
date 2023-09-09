@@ -4,7 +4,6 @@ import re
 from tools.featuring import Featuring
 import config as cfg
 
-
 class Builder:
 
     def __init__ (self, dataset):
@@ -64,36 +63,6 @@ class Builder:
         for i, group in enumerate(self.raw_main_path):
             for filename in os.listdir(self.aggregate_main_path):
                 if re.search('^Bearing.*timefeature_' + str(i), filename):          
-                    # datafile = pd.read_csv(os.path.join(self.aggregate_main_path, filename))
-                    # set_analytic_aux= datafile.iloc[:, 12: 17]
-                    # set_cov_aux= datafile.iloc[:, 0: 12]
-                    # set_analytic= pd.concat([set_analytic, set_analytic_aux], axis= 1)
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-                    # set_cov_aux= datafile.iloc[:, 17: 19]     
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)   
-
-                    # set_analytic_aux= datafile.iloc[:, 31: 36]
-                    # set_cov_aux= datafile.iloc[:, 19: 31]
-                    # set_analytic= pd.concat([set_analytic, set_analytic_aux], axis= 1)
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-                    # set_cov_aux= datafile.iloc[:, 36: 38]     
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-
-                    # datafile = pd.read_csv(os.path.join(self.aggregate_main_path, filename))
-                    # set_analytic_aux= datafile.iloc[:, 12: 17]
-                    # set_cov_aux= datafile.iloc[:, 0: 17]
-                    # set_analytic= pd.concat([set_analytic, set_analytic_aux], axis= 1)
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-                    # set_cov_aux= datafile.iloc[:, 17: 19]     
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)   
-
-                    # set_analytic_aux= datafile.iloc[:, 31: 36]
-                    # set_cov_aux= datafile.iloc[:, 19: 36]
-                    # set_analytic= pd.concat([set_analytic, set_analytic_aux], axis= 1)
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-                    # set_cov_aux= datafile.iloc[:, 36: 38]     
-                    # set_covariates= pd.concat([set_covariates, set_cov_aux], axis= 1)
-
                     datafile = pd.read_csv(os.path.join(self.aggregate_main_path, filename))
                     set_analytic_aux= datafile.iloc[:, 12: 17]
                     set_cov_aux= datafile.iloc[:, 0: 23]

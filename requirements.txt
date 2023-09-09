@@ -1,0 +1,14 @@
+auton_survival==0.0.5
+lifelines==0.27.7
+pandas==1.4.4
+sklearn-pandas==2.2.0
+xgbse==0.2.3
+torchtuples==0.2.2
+pycox==0.2.3
+dcor==0.6
+datashader== 0.15.1
+bokeh==3.2.1
+holoviews==1.17.0
+scikit-image==0.21.0
+colorcet==3.0.1
+seaborn==0.12.2
