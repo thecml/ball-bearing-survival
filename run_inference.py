@@ -8,7 +8,7 @@ from xgbse.non_parametric import calculate_kaplan_vectorized
 from sklearn.model_selection import train_test_split
 from utility.survival import Survival
 from tools.resume import Resume
-from tools import regressors, feature_selectors
+from tools import regressors
 from utility.builder import Builder
 from xgbse.metrics import approx_brier_score
 from sksurv.metrics import concordance_index_censored
@@ -21,8 +21,7 @@ import warnings
 warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
 
 N_BOOT = cfg.N_BOOT
-N_REPEATS = 1
-NEW_DATASET = False
+NEW_DATASET = True
 DATASET = "pronostia"
 TYPE = "correlated"  # not_correlated
 LINE_PLOT = 3
@@ -148,11 +147,6 @@ def main():
         NN_params = regressors.DeepSurv().get_best_hyperparams()
         DSM_model = regressors.DSM().make_model()
         DSM_params = regressors.DSM().get_best_hyperparams()
-
-        #Set the feature selector and train/test split
-        best_features = feature_selectors.NoneSelector(X_train, y_train, cph_model).get_features()
-        X_train, X_test, X_train_NN, X_test_NN = X_train.loc[:, best_features], X_test.loc[:,best_features], \
-                                                 X_train_NN.loc[:, best_features], X_test_NN.loc[:, best_features]
 
         #Format the data for NNs models
         x = X_train_NN.to_numpy()

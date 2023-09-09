@@ -48,6 +48,8 @@ class Builder:
                                     'B' + str(j + 1) + '_FrpH', 'B' + str(j + 1) + '_FcaH', 'B' + str(j + 1) + '_Fo', 'B' + str(j + 1) + '_Fi', 'B' + str(j + 1) + '_Fr', 'B' + str(j + 1) + '_Frp', 'B' + str(j + 1) + '_Fca', 
                                     'B' + str(j + 1) + '_noise', 'B' + str(j + 1) + '_Event', 'B' + str(j + 1) + '_Survival_time']
                         
+                    if not os.path.exists(self.aggregate_main_path):
+                        os.mkdir(self.aggregate_main_path)
                     dataname= self.aggregate_main_path + "Bearing1_" + str(bearing) + "_" + str(i) + "_timefeature" + "_" + str(z) + ".csv"
                     dataset.to_csv(dataname, index= False)
                     i += 1

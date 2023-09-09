@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 import math
-import argparse
 import config as cfg
+import os
 from pycox.evaluation import EvalSurv
 from sksurv.util import Surv
 from sklearn.model_selection import KFold
@@ -174,7 +174,10 @@ def main():
                 model_results = pd.concat([model_results, res_sr.to_frame().T], ignore_index=True)
             
             # Save results
-            model_results.to_csv(f"logs/{DATASET}/{TYPE}/" + f"{model_name}_cv_results.csv")
+            outdir = f"logs/{DATASET}/{TYPE}/"
+            if not os.path.exists(outdir):
+                os.makedirs(outdir)
+            model_results.to_csv(outdir + f"{model_name}_cv_results.csv")
         
 if __name__ == "__main__":
     main()
