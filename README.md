@@ -31,4 +31,3 @@ python run_cross_validation.py
 
 # Inference
 python run_inference.py
-``
