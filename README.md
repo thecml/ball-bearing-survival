@@ -4,7 +4,7 @@ This repository is the official implementation of [Predicting Survival Time of B
 
 The proposed method is implemented based on scikit-survival, auton-survival and others.
 
-<p align="center"><img src="https://github.com/thecml/ball-bearing-survival/img/pipeline.png" width="95%" height="95%">
+<p align="left"><img src="https://github.com/thecml/ball-bearing-survival/blob/main/img/pipeline.png" width="50%" height="50%">
 
 In this paper, we propose a novel approach for predictive maintenance of ball bearings using survival analysis.
     
