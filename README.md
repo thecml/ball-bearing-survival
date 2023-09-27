@@ -16,6 +16,11 @@ Requirements
 ----------------------
 To run the models, please refer to [Requirements.txt](https://github.com/thecml/UE-BNNSurv/blob/main/requirements.txt).
 
+Install auton-survival manually from Git:
+```
+pip install git+https://github.com/autonlab/auton-survival.git
+```
+
 Code was tested in virtual environment with `Python 3.9`.
 
 Training
