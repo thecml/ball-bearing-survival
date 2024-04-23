@@ -14,7 +14,7 @@ To view the license for this work, visit https://github.com/thecml/ball-bearing-
 
 Requirements
 ----------------------
-To run the models, please refer to [Requirements.txt](https://github.com/thecml/UE-BNNSurv/blob/main/requirements.txt).
+To run the models, please refer to [Requirements.txt](https://github.com/thecml/ball-bearing-survival/blob/main/requirements.txt).
 
 Install auton-survival manually from Git:
 ```
