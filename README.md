@@ -42,12 +42,10 @@ Citation
 --------
 ```
 @misc{lillelund_predicting_2023,
-      title={Predicting Survival Time of Ball Bearings in the Presence of Censoring}, 
-      author={Christian Marius Lillelund and Fernando Pannullo and Morten Opprud Jakobsen and Christian Fischer Pedersen},
-      howpublished = {Accepted at AAAI Fall Symposium 2023},
-      year={2023},
-      eprint={2309.07188},
-      archivePrefix={arXiv},
-      primaryClass={eess.SP}
+  title={Predicting Survival Time of Ball Bearings in the Presence of Censoring}, 
+  author={Christian M. Lillelund and Fernando Pannullo and Morten Opprud Jakobsen and Christian Fischer Pedersen},
+  howpublished = {Poster presented at AAAI Fall Symposium 2023},
+  year={2023},
+  url={https://arxiv.org/abs/2309.07188}
 }
 ```
