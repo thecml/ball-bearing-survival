@@ -40,6 +40,7 @@ python run_inference.py
 
 Citation
 --------
+Please cite this work if you found it useful.
 ```
 @misc{lillelund_predicting_2023,
   title={Predicting Survival Time of Ball Bearings in the Presence of Censoring}, 
